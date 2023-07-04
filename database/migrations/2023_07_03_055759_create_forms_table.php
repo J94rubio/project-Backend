@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('score', function (Blueprint $table) {
+        Schema::create('forms', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("name");
-            $table->string("score");
-            $table->string("date");
+            $table->string("nombreapellido");
+            $table->string("correoelectronico");
+            $table->string("telefono");
+            $table->string("mensaje");
+            $table->string("contacto");
+            $table->string("horario");
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('score');
+        Schema::dropIfExists('forms');
     }
 };

@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\FormController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,46 +22,24 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get("/saludo", function (Request $request) {
+//Api Book//
 
-    $message = ['message' => "Hola José, lo lograste perro!!!"];
+Route::get("/book", [BookController::class,'read']);
 
-    return response() -> json($message);
-});
+Route::post("/book", [BookController::class,'create']);
 
-Route::post("/libro", function (Request $request) {
+Route::put("/book", [BookController::class,'update']);
 
-    $message = ['book' => "Cien Años de soledad"];
+Route::delete("/book", [BookController::class,'delete']);
 
-    return response() -> json($message);
-});
+//Api Form
 
-Route::put("/playList", function (Request $request) {
+Route::get("/form", [FormController::class,'read']);
 
-    $message = [
-        'lista' => [
-            "cancion1" => "Perro fiel - Reykon",
-            "cancion2" => "Fallaste corazon - Pedro Infante",
-            "cancion3" => "Día tras día - Andres Cepeda",
-            "cancion4" => "Arroyito - Fonseca",
-            "playListNodal" => ["Adios amor","Nace un borracho","Aquí abajo"]
-        ]];
+Route::post("/form", [FormController::class,'create']);
 
-    return response() -> json($message);
-});
+Route::put("/form", [FormController::class,'update']);
 
-Route::patch("/smartPhone", function (Request $request) {
+Route::delete("/form", [FormController::class,'delete']);
 
-    $message = [
-        'message' => ["marca" => ["Samsung", "Iphone", "Xiaomi"], "modelo" => ["Galaxy S20", "14 Pro Max", "Redmi Note 12S"]]   
-    ];
 
-    return response() -> json($message);
-});
-
-Route::delete("/series", function (Request $request) {
-
-    $message = ['message' => "Manifiesto"];
-
-    return response() -> json($message);
-});
